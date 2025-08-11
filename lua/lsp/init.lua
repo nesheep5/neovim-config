@@ -16,14 +16,23 @@ require("mason-lspconfig").setup({
   ensure_installed = mason_ensure_installed,
 })
 
--- Global LSP configuration
-vim.lsp.config("*", {
+-- Global LSP configuration using the new approach
+vim.lsp.config["*"] = {
   on_attach = require("lsp.common").on_attach,
   capabilities = require("cmp_nvim_lsp").default_capabilities(),
   flags = {
     debounce_text_changes = 150,
   },
-})
+}
 
--- Enable LSP servers (individual configurations are loaded from lsp/*.lua files)
+-- Configure individual LSP servers using the new approach
+vim.lsp.config.lua_ls = require("lsp.lua_ls")
+vim.lsp.config.ts_ls = require("lsp.ts_ls")
+vim.lsp.config.eslint = require("lsp.eslint")
+vim.lsp.config.ruby_lsp = require("lsp.ruby_lsp")
+vim.lsp.config.sorbet = require("lsp.sorbet")
+vim.lsp.config.pyright = require("lsp.pyright")
+vim.lsp.config.ruff = require("lsp.ruff")
+
+-- Enable LSP servers
 vim.lsp.enable({ "lua_ls", "ts_ls", "eslint", "flow", "ruby_lsp", "sorbet", "pyright", "ruff" })
