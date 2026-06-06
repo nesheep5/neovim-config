@@ -1,18 +1,16 @@
 # neovim-config
 
-Neovim の個人設定。Neovim **0.12+** 前提。GNU Stow で `~/.config/nvim` に symlink 配置する。
+Neovim の個人設定。Neovim **0.12+** 前提。`~/.config/nvim` をこのリポジトリの
+`nvim/` への symlink にして使う。
 
 ## セットアップ
 
 ```sh
 ghq get github.com/nesheep5/neovim-config
-cd ~/ghq/github.com/nesheep5/neovim-config
-stow nvim
+ln -sfn ~/ghq/github.com/nesheep5/neovim-config/nvim ~/.config/nvim
 ```
 
-`.stowrc` で `--target=$HOME/.config` を指定しているため、`stow nvim` を実行すると
-`~/.config/nvim` → このリポジトリの `nvim/` への symlink が張られる。
-
+`~/.config/nvim` がリポジトリの `nvim/` を指す 1 本の symlink になる。
 設定は `~/.config/nvim/...`（symlink 経由）を直接編集すれば、このリポジトリの実体が変わる。
 
 ## 前提ツール
@@ -24,11 +22,11 @@ stow nvim
 
 ## 構成
 
-stow パッケージは `nvim/`。その中身がまるごと `~/.config/nvim` にリンクされる。
+`nvim/` が `~/.config/nvim` の実体（symlink 先）。
 
 ```
 neovim-config/                  # リポジトリ
-└── nvim/                       # stow パッケージ = ~/.config/nvim (symlink 先)
+└── nvim/                       # = ~/.config/nvim (symlink 先)
     ├── init.lua
     ├── lsp/                    # 各 LSP サーバ設定 (runtimepath 直下、自動ロード)
     │   └── <server>.lua

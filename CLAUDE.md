@@ -1,12 +1,12 @@
 # CLAUDE.md
 
-Neovim 個人設定リポジトリ。セットアップ・stow の仕組み・前提ツールは README.md を参照。
+Neovim 個人設定リポジトリ。セットアップ（symlink 配置）・前提ツールは README.md を参照。
 ここでは Claude が編集時に間違えやすい点だけを記す。
 
 ## 編集対象パス（最重要）
 
-設定の実体は `nvim/` 配下。`~/.config/nvim` は stow による symlink なので、
-**リポジトリ内の `nvim/...` を直接編集する**（`nvim/` は stow パッケージ名）。
+設定の実体は `nvim/` 配下。`~/.config/nvim` はこの `nvim/` への symlink なので、
+**リポジトリ内の `nvim/...` を直接編集する**。
 
 - `init.lua` → `nvim/init.lua`
 - プラグイン → `nvim/lua/plugins/`
