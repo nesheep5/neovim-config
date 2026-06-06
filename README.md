@@ -7,10 +7,19 @@ Neovim の個人設定。Neovim **0.12+** 前提。`~/.config/nvim` をこのリ
 
 ```sh
 ghq get github.com/nesheep5/neovim-config
+cd ~/ghq/github.com/nesheep5/neovim-config
+./setup.sh
+```
+
+`setup.sh` が `~/.config/nvim` をこのリポジトリの `nvim/` への symlink にする。
+既存の `~/.config/nvim` が実体なら `.bak.<日時>` に退避してから張り替える（冪等）。
+
+手動で張る場合:
+
+```sh
 ln -sfn ~/ghq/github.com/nesheep5/neovim-config/nvim ~/.config/nvim
 ```
 
-`~/.config/nvim` がリポジトリの `nvim/` を指す 1 本の symlink になる。
 設定は `~/.config/nvim/...`（symlink 経由）を直接編集すれば、このリポジトリの実体が変わる。
 
 ## 前提ツール
