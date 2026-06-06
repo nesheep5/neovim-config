@@ -42,7 +42,14 @@ conform.nvim による保存時フォーマット（`lua/plugins/conform.lua`）
 - lua=stylua / go=goimports+gofmt / python=ruff / ts・js・markdown=prettier
 - ruby は formatter 空で **ruby-lsp に委譲**（`lsp_format = "fallback"`）
 
+フォーマッタ本体（stylua/prettier/goimports）は **mason-tool-installer** が
+自動インストールする（`config/lazy.lua`）。LSP サーバの `ensure_installed`
+（mason-lspconfig 側）には書けないので、フォーマッタ等の非 LSP ツールを
+追加するときは mason-tool-installer の `ensure_installed`（mason パッケージ名）に書く。
+
 ## 動作確認
 
-- Lua 構文チェック: `luac -p <file>`、または Neovim 起動でエラー確認。
+- Lua 構文/ロード確認: `nvim --headless "+luafile <file>" +qa`（エラーが出なければOK）。
+  エディタ上では lua_ls (LSP) が書きながら指摘する。
+  ※ `luac` はこの環境に無いため使わない。
 - 反映: Neovim 再起動 or `:source`。新規プラグインは `:Lazy sync`。

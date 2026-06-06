@@ -42,6 +42,21 @@ require("lazy").setup({
         automatic_enable = false,
       },
     },
+    -- LSP サーバ以外のツール (フォーマッタ等) を mason 経由で自動インストール。
+    -- ensure_installed には mason のパッケージ名を書く (conform が呼ぶ名前とは別)。
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      dependencies = { "mason-org/mason.nvim" },
+      opts = {
+        ensure_installed = {
+          "stylua", -- lua フォーマッタ
+          "prettier", -- ts/js/markdown フォーマッタ
+          -- goimports は go ツールチェーンがある時だけ入れる (gofmt は go 同梱で mason 不要)
+          { "goimports", condition = function() return vim.fn.executable("go") == 1 end },
+        },
+        run_on_start = true,
+      },
+    },
   },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
