@@ -43,7 +43,10 @@ vim.opt.splitright = true          -- 右に分割
 -- =========================================
 -- 補完
 -- =========================================
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}  -- 補完メニュー設定
+vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'popup', 'fuzzy'}  -- 補完メニュー設定
+vim.o.autocomplete = true          -- 入力中の自動補完ポップアップ（v0.12+）
+vim.opt.pumheight = 12             -- 補完メニュー高さ上限
+vim.opt.wildoptions = {'pum', 'fuzzy'}  -- コマンドライン補完もpum+ファジー
 
 -- =========================================
 -- Undo・履歴

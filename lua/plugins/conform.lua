@@ -1,14 +1,17 @@
 return {
-  'stevearc/conform.nvim',
+  "stevearc/conform.nvim",
   opts = {
     default_format_opts = {
       lsp_format = "fallback", -- 外部フォーマッタがない場合のみ LSP を使う
     },
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", "black" },
-      ruby = { "syntax_tree" },
-      javascript = { "prettier", "eslint" },
+      go = { "goimports", "gofmt" },
+      python = { "ruff_organize_imports", "ruff_format" },
+      ruby = {}, -- ruby-lsp のフォーマットに委譲 (lsp_format = fallback)
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      javascript = { "prettier" },
     },
     -- ファイル保存時にフォーマットを実行する
     format_on_save = {
