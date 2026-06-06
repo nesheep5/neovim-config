@@ -12,6 +12,7 @@ return {
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
       javascript = { "prettier" },
+      markdown = { "prettier" },
     },
     -- ファイル保存時にフォーマットを実行する
     format_on_save = {

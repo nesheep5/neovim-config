@@ -21,6 +21,10 @@ return {
         "python",
         "typescript",
         "tsx",
+        "markdown",
+        "markdown_inline",
+        "yaml",
+        "html",
       }
       require("nvim-treesitter").install(ensure)
 
@@ -38,6 +42,9 @@ return {
           "python",
           "typescript",
           "typescriptreact",
+          "markdown",
+          "yaml",
+          "html",
         },
         callback = function()
           pcall(vim.treesitter.start)
