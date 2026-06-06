@@ -35,24 +35,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
     end
 
-    -- バッファローカルなキーマップ
+    -- バッファローカルなキーマップ。
+    -- 0.11+ 標準でマッピング済みのものは定義しない:
+    --   grr=references / gri=implementation / grn=rename / gra=code_action
+    --   grt=type_definition / gO=document_symbol / K=hover / <C-S>(insert)=signature_help
+    -- ここでは標準に無い・好みのキーだけを補う。
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gf", function()
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts) -- 定義へ (標準に無い)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts) -- 宣言へ (標準に無い)
+    vim.keymap.set("n", "gf", function() -- フォーマット (標準に無い)
       vim.lsp.buf.format({ async = true })
     end, bufopts)
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts) -- normal でも signature help
     vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set("n", "<space>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
   end,
 })
 
