@@ -24,19 +24,22 @@ stow nvim
 
 ## 構成
 
+stow パッケージは `nvim/`、その中の `nvim/nvim/` が `~/.config/nvim` にリンクされる。
+
 ```
-nvim/                       # stow パッケージ (= ~/.config/nvim)
-├── init.lua
-├── lsp/                    # 各 LSP サーバ設定 (runtimepath 直下、自動ロード)
-│   └── <server>.lua
-└── lua/
-    ├── config/
-    │   ├── lsp.lua         # diagnostic / capabilities / キーマップ / enable
-    │   ├── lazy.lua        # プラグイン管理 (lazy.nvim) + mason
-    │   ├── options.lua
-    │   ├── keymaps.lua
-    │   └── autocmds.lua
-    └── plugins/            # プラグインごとの設定
+nvim/                           # stow パッケージ
+└── nvim/                       # = ~/.config/nvim (symlink 先)
+    ├── init.lua
+    ├── lsp/                    # 各 LSP サーバ設定 (runtimepath 直下、自動ロード)
+    │   └── <server>.lua
+    └── lua/
+        ├── config/
+        │   ├── lsp.lua         # diagnostic / capabilities / キーマップ / enable
+        │   ├── lazy.lua        # プラグイン管理 (lazy.nvim) + mason
+        │   ├── options.lua
+        │   ├── keymaps.lua
+        │   └── autocmds.lua
+        └── plugins/            # プラグインごとの設定
 ```
 
 ## LSP
