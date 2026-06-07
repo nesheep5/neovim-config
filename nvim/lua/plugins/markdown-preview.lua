@@ -12,7 +12,7 @@ return {
   keys = {
     {
       "<leader>mp",
-      "<Plug>(MarkdownPreviewToggle)",
+      "<Plug>MarkdownPreviewToggle",
       desc = "Markdown: ブラウザプレビュー トグル",
       ft = "markdown",
     },
