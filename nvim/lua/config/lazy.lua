@@ -59,5 +59,6 @@ require("lazy").setup({
     },
   },
   install = { colorscheme = { "habamax" } },
-  checker = { enabled = true },
+  -- 起動時の更新チェック通知を無効化（更新は :Lazy で手動確認する）
+  checker = { enabled = false },
 })
