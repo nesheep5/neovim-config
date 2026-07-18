@@ -61,4 +61,6 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- 起動時の更新チェック通知を無効化（更新は :Lazy で手動確認する）
   checker = { enabled = false },
+  -- luarocks 依存プラグインを使わないため無効化（hererocks 環境の構築を省く）
+  rocks = { enabled = false },
 })
